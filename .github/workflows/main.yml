@@ -1,0 +1,24 @@
+name: run with teller
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+
+jobs:
+  build:
+    name: Build your code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@master
+
+
+      # set up teller
+      - name: Setup Teller
+        uses: spectralops/setup-teller@v1
+
+      - name: Run a Teller task (show, scan, run, etc.)
+        run: teller run [args]
