@@ -1,0 +1,21 @@
+- name: Run tfsec with sarif upload
+  # You may pin to the exact commit or the version.
+  # uses: aquasecurity/tfsec-sarif-action@868eade2142739cee2153c9ceff9eba4beded067
+  uses: aquasecurity/tfsec-sarif-action@v0.0.6
+  with:
+    # Directory to run the action on, from the repo root.
+Default is . ( root of the repository)
+
+    working_directory: # optional, default is .
+    # The path to write the sarif report, defaults to tfsec.sarif
+    sarif_file: # optional
+    # The tfvars file to use for the scan
+    tfvars_file: # optional
+    # The version of tfsec to use for the scan, defaults to latest
+    tfsec_version: # optional, default is latest
+    # The path to the config file. (eg. ./tfsec.yml)
+    config_file: # optional
+    # Space seperated args specified here will be added during tfsec execution.
+(eg. --force-all-dirs --verbose)
+
+    tfsec_args: # optional
