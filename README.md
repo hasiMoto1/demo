@@ -1,5 +1,23 @@
-SONARQUBE_URL=$(aws cloudformation list-exports | jq '.Exports[] | select(.Name=="SonarQubeURL").Value' | tr -d '[\"\n]')
+sudo -i
 
-ZAP_URL=$(aws cloudformation list-exports | jq '.Exports[] | select(.Name=="OWASPZapURL").Value' | tr -d '[\"\n]')
+yum update -y
 
-export ZAPAPIKEY="workshopzapkey"
+sudo amazon-linux-extras install java-openjdk11 -y
+
+sudo amazon-linux-extras install epel -y
+
+sudo yum install daemonize -y
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo \https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+sudo yum upgrade
+
+sudo yum install jenkins -y
+
+sudo service jenkins start
+
+sudo service jenkins status
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
