@@ -1,26 +1,9 @@
-sudo -i
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg: "NMAP TCP Scan";sid:10000005; rev:2; classtype:TCP-Scan)
+alert tcp $EXTERNAL_NET any  -> $HOME_NET any (msg:"Nmap XMAS Scan"; flags:FPU; sid:1000006; rev:1; classtype:Xmas-Scan)
+alert tcp $EXTERNAL_NET any  -> $HOME_NET any (msg:"Nmap FIN Scan"; flags:F; sid:1000008; rev:1;classtype:FIN-Scan)
 
-yum update -y
 
-sudo amazon-linux-extras install java-openjdk11 -y
+snort -i1 -A console -c C:\Snort\etc\snort.conf -l C:\Snort\log -A full
 
-sudo amazon-linux-extras install epel -y
 
-sudo yum install daemonize -y
 
-sudo wget -O /etc/yum.repos.d/jenkins.repo \https://pkg.jenkins.io/redhat-stable/jenkins.repo
-
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-
-sudo yum upgrade
-
-sudo yum install jenkins -y
-
-sudo service jenkins start
-
-sudo service jenkins status
-
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-
-authResponse = { "principalId": "abc123", "policyDocument": { "Version": "2012-10-17", "Statement": [{"Action": "execute-api:Invoke", "Resource": ["arn:aws:execute-api:us-east-1:YOURACCOUNTNUMBER:2ogoj2ul12/test/GET/customers""], "Effect": auth}] }}
-    return authResponse
