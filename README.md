@@ -1,1 +1,1 @@
-Invoke-Command -ComputerName Windows10 -ScriptBlock { Remove-Item -path E:\MyFolder -recurse } -credential admin
+source="WinEventLog:Microsoft-Windows-PowerShell/Operational" EventCode=4103 NOT ("*Program Files\\SplunkUniversalForwarder\\etc\\apps*" OR "*SplunkUniversalForwarder\\bin\\splunk-powershell-common.ps1*" OR "*var\\log\\splunk\\splunk-powershell*") | eval Cmd_Length=len(Message) | table _time, host,Cmd_Length,Message 
